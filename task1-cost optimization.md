@@ -31,3 +31,28 @@ cron(0 20 ? * MON-FRI *)
 Weekend Stop
 
 cron(0 0 ? * SAT *)
+
+
+
+additional cost optimisation steps across ECS, ALB, and data transfer
+
+
+ECS Fargate
+Use spot tasks for non‑critical workloads.
+Right‑size CPU/memory allocations.
+Apply scheduled scaling to reduce tasks during off‑hours.
+
+RDS
+Considering Aurora Serverless v2 for auto‑scaling.
+Enable storage auto‑scaling.
+Use smaller instance class for staging.
+
+ALB
+consolidate multiple ALBs into one.
+Tune idle timeout to reduce unnecessary connections.
+Use path‑based routing to optimize traffic.
+
+Data Transfer
+Placing ECS tasks and RDS in the same AZ to avoid cross‑AZ charges.
+Use VPC endpoints for S3/ECR traffic.
+Enabling compression and caching with CloudFront.
